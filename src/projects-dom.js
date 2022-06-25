@@ -37,8 +37,8 @@ const projectBtn = (() => {
         }
         _projectBtnArray[i].classList.add('selected');
       });
-    }
-  }
+    };
+  };
 
   return {projectBtnClick};
 })();

@@ -17,10 +17,13 @@ const addProjectBtn = (() => {
       return;
     }
     projectsArray.push(newProject);  
+    console.log(projectsArray);
+    console.log(projectsArray[1].name)
     
     renderProjects();
     addProjectBtnClick();
     projectBtn.projectBtnClick();
+    console.log(projectsArray)
   }
 
   function addProjectBtnClick() {

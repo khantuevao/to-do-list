@@ -5,6 +5,7 @@ import {projectBtn} from './projects-dom';
 import {projectsArray} from './projects-array';
 import {projectFactory} from './project-factory';
 import {renderProjects} from './projects-dom';
+import {renderTasks} from './tasks-dom';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     addProjectBtn.addProjectBtnClick();
     projectBtn.projectBtnClick();
+    renderTasks();
   }
 });
 
