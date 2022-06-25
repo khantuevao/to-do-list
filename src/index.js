@@ -1,13 +1,21 @@
-import addProject from './add-project';
-import { projectsArray } from './projects-array';
+import './style.css';
+
+import {addProjectBtn} from './projects-logic';
+import {projectBtn} from './projects-dom';
+import {projectsArray} from './projects-array';
+import {projectFactory} from './project-factory';
+import {refreshProjects} from './projects-dom';
 
 
-const consoleBtn = document.getElementById('consoleBtn');
-consoleBtn.addEventListener('click', () => {
-  console.log(projectsArray);
+document.addEventListener('DOMContentLoaded', () => {
+  if (projectsArray.length === 0) {
+    const newProject = projectFactory('default');
+    projectsArray.push(newProject);
+    refreshProjects();
+    addProjectBtn.addProjectBtnClick();
+    projectBtn.projectBtnClick();
+  }
 });
-
-
 
 
 

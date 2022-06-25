@@ -1,0 +1,56 @@
+body {
+  background-color: whitesmoke;
+  margin: 0;
+}
+
+header {
+  background-color: rgb(50,50,50);
+  height: 6rem;
+  color: whitesmoke;
+  font-size: 4rem;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 1rem;
+}
+
+#project-items {
+  margin: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-button {
+  background: none;
+  border: 2px solid rgb(50,50,50);
+  border-radius: 1rem;
+  font-size: 2rem;
+  padding: 0 0.5rem;
+  transition-duration: 0.2s;
+}
+.project-button:hover, .selected {
+  background-color: rgb(50,50,50);
+  color: whitesmoke;
+}
+.project-button:active {
+  background: none;
+  color: rgb(50,50,50);
+}
+
+.selected:active {
+  background-color: rgb(50,50,50);
+  color: whitesmoke;
+}
+
+#add-project-button {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+}
+#add-project-button:hover {
+  transform: scale(1.1);
+}
+#add-project-button:active {
+  transform: scale(1);
+
+}
