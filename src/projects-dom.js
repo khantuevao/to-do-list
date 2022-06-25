@@ -1,10 +1,10 @@
 import { projectsArray } from './projects-array';
 
-export {refreshProjects};
+export {renderProjects};
 export {projectBtn};
 
 
-const refreshProjects = () => {
+const renderProjects = () => {
   const projectItems = document.getElementById('project-items');
   projectItems.innerHTML = '';
 
@@ -27,15 +27,15 @@ const refreshProjects = () => {
 
 
 const projectBtn = (() => {
-  function projectBtnClick() {
-    const projectBtnArray = document.getElementsByClassName('project-button');
-    for (let i = 0; i < projectBtnArray.length; i++) {
-      projectBtnArray[i].addEventListener('click', () => {
-        for (let j = 0; j < projectBtnArray.length; j++) {
-          projectBtnArray[j].classList.remove('selected');
-        }
-        projectBtnArray[i].classList.add('selected');
+  const _projectBtnArray = document.getElementsByClassName('project-button');
 
+  function projectBtnClick() {
+    for (let i = 0; i < _projectBtnArray.length; i++) {
+      _projectBtnArray[i].addEventListener('click', () => {
+        for (let j = 0; j < _projectBtnArray.length; j++) {
+          _projectBtnArray[j].classList.remove('selected');
+        }
+        _projectBtnArray[i].classList.add('selected');
       });
     }
   }

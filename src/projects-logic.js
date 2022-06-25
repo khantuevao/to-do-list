@@ -1,6 +1,6 @@
 import { projectFactory } from './project-factory';
 import { projectsArray } from './projects-array';
-import { refreshProjects } from './projects-dom';
+import { renderProjects } from './projects-dom';
 import { projectBtn } from './projects-dom';
 
 export { addProjectBtn };
@@ -18,7 +18,7 @@ const addProjectBtn = (() => {
     }
     projectsArray.push(newProject);  
     
-    refreshProjects();
+    renderProjects();
     addProjectBtnClick();
     projectBtn.projectBtnClick();
   }
