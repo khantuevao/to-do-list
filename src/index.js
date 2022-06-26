@@ -1,5 +1,5 @@
 import './style.css';
-import { projectController } from './projects-controller';
+import { displayController } from './projects-controller';
 
 
-projectController.checkIfEmpty()
+displayController.checkIfEmpty()
