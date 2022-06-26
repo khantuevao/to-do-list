@@ -20,7 +20,7 @@ header {
   flex-wrap: wrap;
 }
 
-.project-button {
+.project {
   background: none;
   border: 2px solid rgb(50,50,50);
   border-radius: 1rem;
@@ -28,11 +28,11 @@ header {
   padding: 0 0.5rem;
   transition-duration: 0.2s;
 }
-.project-button:hover, .selected {
+.project:hover, .selected {
   background-color: rgb(50,50,50);
   color: whitesmoke;
 }
-.project-button:active {
+.project:active {
   background: none;
   color: rgb(50,50,50);
 }
@@ -42,15 +42,15 @@ header {
   color: whitesmoke;
 }
 
-#add-project-button {
+#add-project {
   font-size: 1.2rem;
   background: none;
   border: none;
 }
-#add-project-button:hover, #add-task-button:hover, #project-delete:hover {
+#add-project:hover, #add-task:hover, #delete-project:hover {
   transform: scale(1.1);
 }
-#add-project-button:active, #add-task-button:active, #project-delete:active {
+#add-project:active, #add-task:active, #delete-project:active {
   transform: scale(1);
 }
 
@@ -85,14 +85,14 @@ header {
   margin-top: 1rem;
 }
 
-#add-task-button, #project-delete {
+#add-task, #delete-project {
   width: 7rem;
   font-size: 1.2rem;
   background: none;
   border: none;
 }
 
-#project-delete {
+#delete-project {
   width: 8rem;
   margin-left: auto;
 }
