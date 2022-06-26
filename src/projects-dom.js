@@ -1,6 +1,7 @@
 import { projectsArray } from "./projects-array";
 
 export {renderProjects};
+export {changeSelected};
 
 
 function renderProjects() {
@@ -23,4 +24,16 @@ function renderProjects() {
   addProject.setAttribute('id', 'add-project');
   addProject.innerHTML = '+ add project';
   projectItems.appendChild(addProject);
+}
+
+function changeSelected() {
+  const projects = document.getElementsByClassName('project');
+  for (let i = 0; i < projects.length; i++) {
+    projects[i].addEventListener('click', () => {
+      for (let j = 0; j < projects.length; j++) {
+        projects[j].classList.remove('selected');
+      }
+      projects[i].classList.add('selected');
+    });
+  }
 }

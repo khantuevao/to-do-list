@@ -2,6 +2,7 @@ import { addProject } from "./projects-logic";
 import { renderProjects } from "./projects-dom";
 import { projectsArray } from "./projects-array";
 import { projectFactory } from "./projects-factory";
+import { changeSelected } from "./projects-dom";
 
 export {projectController};
 
@@ -13,6 +14,7 @@ const projectController = (() => {
     addProject();
     renderProjects();
     _listen();
+    changeSelected();
   });
 }
 
