@@ -4,22 +4,31 @@ import { renderProjects, changeSelected } from "./projects-dom";
 export {displayController};
 
 const displayController = (() => {
-  function _selectFirstProject() {
+  const selectProject = (() => {
     const projects = document.getElementsByClassName('project');
-    if (projects.length === 0) return;
-    projects[0].classList.add('selected');
-  }
 
-  function _addProjectListener() {
+    function first() {
+      if (projects.length === 0) return;
+      projects[0].classList.add('selected');
+    }
+  
+    function last() {
+      if (projects.length === 0) return;
+      const selected = projects[projects.length - 1].classList.add('selected');
+    }
+
+    return {first, last};
+  })();
+  
+
+  function _addProject() {
     const addProjectBtn = document.getElementById('add-project');
     addProjectBtn.addEventListener('click', () => {
       const addFormInput = document.getElementById('add-project-input');
       const name = addFormInput.value;
       addProjectToArray(name);
       renderProjects();
-      
-      const projects = document.getElementsByClassName('project');
-      const selected = projects[projects.length - 1].classList.add('selected');
+      selectProject.last()
       addFormInput.value = '';
       changeSelected();
     })
@@ -30,19 +39,17 @@ const displayController = (() => {
     deleteProjectBtn.addEventListener('click', () => {
       deleteProjectFromArray();
       renderProjects();
-      _selectFirstProject();
+      selectProject.first();
       changeSelected();
-
     });
-    
   }
 
   function checkIfEmpty() {
     if (projectsArray.length === 0) {
       addProjectToArray('default');
       renderProjects();
-      _selectFirstProject();
-      _addProjectListener();
+      selectProject.first();
+      _addProject();
       _deleteProject();
     }
   }
