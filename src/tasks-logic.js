@@ -1,5 +1,5 @@
 import { projectsArray } from "./projects-logic";
-export {taskFactory, addTaskToArray};
+export {taskFactory, addTaskToArray, changeColor};
 
 const taskFactory = (date, name, description, priority) => {
   const checked = false;
@@ -31,3 +31,26 @@ function addTaskToArray(index) {
 
 
 //task change color
+function changeColor(index) {
+  const taskDivs = document.getElementsByClassName('task');
+  let color;
+  projectsArray[index].tasks.forEach(element => {
+    const prio = element.priority;
+    switch (prio) {
+      case '1':
+        color = 'rgb(60, 200, 60)';
+        break;
+      case '2':
+        color = 'rgb(150, 250, 100)';
+        break;
+      case '3':
+        color = 'rgb(250, 150, 100)';
+        break;
+      case '4':
+        color = 'rgb(220, 60, 60)';
+        break;
+    }
+    const taskIndex = projectsArray[index].tasks.indexOf(element);
+    taskDivs[taskIndex].style.backgroundColor = color;
+  })
+}

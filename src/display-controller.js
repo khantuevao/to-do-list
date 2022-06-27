@@ -1,7 +1,7 @@
 import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
 import { clearTaskInput, renderTasks } from "./tasks-dom";
-import { addTaskToArray } from "./tasks-logic";
+import { addTaskToArray, changeColor } from "./tasks-logic";
 
 export {displayController};
 
@@ -33,6 +33,8 @@ const displayController = (() => {
       addProjectInput.value = '';
       changeSelected();
       displayTasks();
+      changeColor(getProjectIndex());
+
       _deleteTask(getProjectIndex());
     })
   }
@@ -49,6 +51,7 @@ const displayController = (() => {
         taskItems.innerHTML = '';
       } else {
         displayTasks();
+        changeColor(getProjectIndex());
         _deleteTask(getProjectIndex());
       }
     });
@@ -59,6 +62,7 @@ const displayController = (() => {
     addTaskBtn.addEventListener('click', () => {
       addTaskToArray(getProjectIndex());
       displayTasks();
+      changeColor(getProjectIndex());
       _deleteTask(getProjectIndex());
       clearTaskInput();
     })
@@ -70,6 +74,7 @@ const displayController = (() => {
       deleteTaskBtns[i].addEventListener('click', () => {
         projectsArray[index].tasks.splice(i, 1);
         displayTasks();
+        changeColor(getProjectIndex());
         _deleteTask(getProjectIndex());
       });
     }
@@ -81,6 +86,7 @@ const displayController = (() => {
     for (let i = 0; i < projects.length; i++) {
       projects[i].addEventListener('click', () => {
         renderTasks(getProjectIndex());
+        changeColor(getProjectIndex());
       });
     }
   }
@@ -100,12 +106,16 @@ const displayController = (() => {
       const defaultTaskOne = {
         date: '2019-09-27',
         name: 'get tits from school',
+        priority: '1',
+        description: '',
         checked: false
       }
 
       const defaultTaskTwo = {
         date: '2018-05-03',
         name: 'feed the kitty',
+        description: '',
+        priority: '4',
         checked: true
       }
 
@@ -115,6 +125,7 @@ const displayController = (() => {
       displayTasks();
       _deleteTask(getProjectIndex());
       _addTask();
+      changeColor(getProjectIndex());
     }
   }
  
