@@ -1,8 +1,8 @@
-export {projectsArray, projectFactory, addProjectToArray, getIndex};
+export {projectsArray, projectFactory, addProjectToArray, getProjectIndex};
 
 const projectsArray = [];
 
-function projectFactory(name) {
+const projectFactory = (name) => {
   const tasks = [];
   return {name, tasks};
 }
@@ -16,7 +16,7 @@ function addProjectToArray(name) {
   projectsArray.push(newProject);
 };
 
-function getIndex() {
+function getProjectIndex() {
   const selectedIndex = (element) => element.name === (document.querySelector('.selected')).textContent;
   const index = projectsArray.findIndex(selectedIndex);
 

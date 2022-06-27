@@ -1,4 +1,4 @@
-import { projectsArray, addProjectToArray, getIndex } from "./projects-logic";
+import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
 import { renderTasks } from "./tasks-dom";
 
@@ -39,7 +39,7 @@ const displayController = (() => {
   function _deleteProject() {
     const deleteProjectBtn = document.getElementById('delete-project');
     deleteProjectBtn.addEventListener('click', () => {
-      projectsArray.splice(getIndex(), 1);
+      projectsArray.splice(getProjectIndex(), 1);
       renderProjects();
       selectProject.first();
       changeSelected();
@@ -47,17 +47,17 @@ const displayController = (() => {
         const taskItems = document.getElementById('task-items');
         taskItems.innerHTML = '';
       } else {
-        displayTasks();
+        displayTasks();1
       }
     });
   }
 
   function displayTasks() {
-    renderTasks(getIndex());
+    renderTasks(getProjectIndex());
     const projects = document.getElementsByClassName('project');
     for (let i = 0; i < projects.length; i++) {
       projects[i].addEventListener('click', () => {
-        renderTasks(getIndex());
+        renderTasks(getProjectIndex());
       });
     }
   }
