@@ -1,6 +1,6 @@
 import { projectsArray } from "./projects-logic";
 
-export { renderTasks };
+export { renderTasks, clearTaskInput };
 
 function renderTasks(index) {
   const tasks = projectsArray[index].tasks;
@@ -34,4 +34,15 @@ function renderTasks(index) {
 
     taskItems.appendChild(task);
   });
+}
+
+function clearTaskInput() {
+  const taskDate = document.getElementById('task-date');
+  taskDate.value = '';
+  const taskName = document.getElementById('task-name');
+  taskName.value = '';
+  const taskDescription = document.getElementById('task-description');
+  taskDescription.value = '';
+  const taskPriority = document.getElementById('task-priority');
+  taskPriority.value = '1';
 }

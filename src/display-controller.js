@@ -1,6 +1,7 @@
 import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
-import { renderTasks } from "./tasks-dom";
+import { clearTaskInput, renderTasks } from "./tasks-dom";
+import { addTaskToArray } from "./tasks-logic";
 
 export {displayController};
 
@@ -24,15 +25,24 @@ const displayController = (() => {
   function _addProject() {
     const addProjectBtn = document.getElementById('add-project');
     addProjectBtn.addEventListener('click', () => {
-      const addFormInput = document.getElementById('add-project-input');
-      const name = addFormInput.value;
+      const addProjectInput = document.getElementById('add-project-input');
+      const name = addProjectInput.value;
       addProjectToArray(name);
       renderProjects();
       selectProject.last()
-      addFormInput.value = '';
+      addProjectInput.value = '';
       changeSelected();
       displayTasks();
 
+    })
+  }
+
+  function _addTask() {
+    const addTaskBtn = document.getElementById('add-task');
+    addTaskBtn.addEventListener('click', () => {
+      addTaskToArray(getProjectIndex());
+      displayTasks();
+      clearTaskInput();
     })
   }
 
@@ -47,7 +57,7 @@ const displayController = (() => {
         const taskItems = document.getElementById('task-items');
         taskItems.innerHTML = '';
       } else {
-        displayTasks();1
+        displayTasks();
       }
     });
   }
@@ -75,13 +85,13 @@ const displayController = (() => {
       _deleteProject();
 
       const defaultTaskOne = {
-        date: '27/09',
+        date: '2019-09-27',
         name: 'get tits from school',
         checked: false
       }
 
       const defaultTaskTwo = {
-        date: '03/05',
+        date: '2018-05-03',
         name: 'feed the kitty',
         checked: true
       }
@@ -90,6 +100,7 @@ const displayController = (() => {
       projectsArray[0].tasks.push(defaultTaskTwo);
 
       displayTasks();
+      _addTask();
     }
   }
  

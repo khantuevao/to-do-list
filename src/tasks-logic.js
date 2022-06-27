@@ -1,10 +1,17 @@
-export {displayTasks};
+import { projectsArray } from "./projects-logic";
+export {taskFactory, addTaskToArray};
 
-function displayTasks(func) {
-  const projects = document.getElementsByClassName('project');
-  for (let i = 0; i < projects.length; i++) {
-    projects[i].addEventListener('click', () => {
-      func;
-    });
-  }
+const taskFactory = (date, name, description, priority) => {
+  const checked = false;
+  return {date, name, description, priority, checked}
+}
+
+function addTaskToArray(index) {
+  const taskDate = document.getElementById('task-date').value;
+  const taskName = document.getElementById('task-name').value;
+  const taskDescription = document.getElementById('task-description').value;
+  const taskPriority = document.getElementById('task-priority').value;
+  if (taskDate === '' || taskName === '') return;
+  const newTask = taskFactory(taskDate, taskName, taskDescription, taskPriority);
+  projectsArray[index].tasks.push(newTask);
 }

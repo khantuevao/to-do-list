@@ -37,9 +37,17 @@ header {
   color: rgb(50,50,50);
 }
 
+#add-project-input {
+  margin-left: 0.5rem;
+}
+
 .selected:active {
   background-color: rgb(50,50,50);
   color: whitesmoke;
+}
+
+#add-task {
+  margin-top: 0.5rem;
 }
 
 #add-project, #add-task, #delete-project {
@@ -87,6 +95,10 @@ header {
 #lower-buttons {
   display: flex;
 }
+#lower-buttons > div {
+  display: flex;
+  flex-direction: column;
+}
 
 form {
   margin-left: 0.5rem;
@@ -94,8 +106,37 @@ form {
 }
 
 #delete-project {
-  width: 8rem;
+  width: 5rem;
   margin-left: auto;
+  margin-right: 0.5rem;
   color: #900;
+  align-self: flex-start;
 }
 
+legend {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.2rem;
+  list-style: none;
+}
+
+label {
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(50,50,50);
+  border-radius: 1rem;
+  padding: 1rem;
+}
