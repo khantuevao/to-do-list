@@ -43,7 +43,12 @@ const displayController = (() => {
       renderProjects();
       selectProject.first();
       changeSelected();
-      displayTasks();
+      if (projectsArray.length === 0) {
+        const taskItems = document.getElementById('task-items');
+        taskItems.innerHTML = '';
+      } else {
+        displayTasks();
+      }
     });
   }
 
