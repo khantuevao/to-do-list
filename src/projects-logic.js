@@ -1,4 +1,4 @@
-export {projectsArray, projectFactory, addProjectToArray, deleteProjectFromArray};
+export {projectsArray, projectFactory, addProjectToArray, getIndex};
 
 const projectsArray = [];
 
@@ -16,9 +16,10 @@ function addProjectToArray(name) {
   projectsArray.push(newProject);
 };
 
-function deleteProjectFromArray() {
+function getIndex() {
   const selectedIndex = (element) => element.name === (document.querySelector('.selected')).textContent;
   const index = projectsArray.findIndex(selectedIndex);
-  projectsArray.splice(index, 1);
-};
+
+  return index;
+}
 
