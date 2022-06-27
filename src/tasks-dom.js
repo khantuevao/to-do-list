@@ -29,7 +29,7 @@ function renderTasks(index) {
 
     const deleteTask = document.createElement('button');
     deleteTask.classList.add('delete-task');
-    deleteTask.innerHTML = 'X';
+    deleteTask.innerHTML = 'x';
     task.appendChild(deleteTask);
 
     taskItems.appendChild(task);

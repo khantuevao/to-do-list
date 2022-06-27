@@ -15,3 +15,19 @@ function addTaskToArray(index) {
   const newTask = taskFactory(taskDate, taskName, taskDescription, taskPriority);
   projectsArray[index].tasks.push(newTask);
 }
+
+//task select
+//get index of project
+//get array of elements from class
+
+
+
+
+//task checked
+
+
+
+
+
+
+//task change color

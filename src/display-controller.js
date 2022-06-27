@@ -33,16 +33,7 @@ const displayController = (() => {
       addProjectInput.value = '';
       changeSelected();
       displayTasks();
-
-    })
-  }
-
-  function _addTask() {
-    const addTaskBtn = document.getElementById('add-task');
-    addTaskBtn.addEventListener('click', () => {
-      addTaskToArray(getProjectIndex());
-      displayTasks();
-      clearTaskInput();
+      _deleteTask(getProjectIndex());
     })
   }
 
@@ -58,8 +49,30 @@ const displayController = (() => {
         taskItems.innerHTML = '';
       } else {
         displayTasks();
+        _deleteTask(getProjectIndex());
       }
     });
+  }
+
+  function _addTask() {
+    const addTaskBtn = document.getElementById('add-task');
+    addTaskBtn.addEventListener('click', () => {
+      addTaskToArray(getProjectIndex());
+      displayTasks();
+      _deleteTask(getProjectIndex());
+      clearTaskInput();
+    })
+  }
+
+  function _deleteTask(index) {
+    const deleteTaskBtns = document.getElementsByClassName('delete-task');
+    for (let i = 0; i < deleteTaskBtns.length; i++) {
+      deleteTaskBtns[i].addEventListener('click', () => {
+        projectsArray[index].tasks.splice(i, 1);
+        displayTasks();
+        _deleteTask(getProjectIndex());
+      });
+    }
   }
 
   function displayTasks() {
@@ -100,6 +113,7 @@ const displayController = (() => {
       projectsArray[0].tasks.push(defaultTaskTwo);
 
       displayTasks();
+      _deleteTask(getProjectIndex());
       _addTask();
     }
   }
