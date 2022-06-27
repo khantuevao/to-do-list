@@ -10,13 +10,28 @@
   <header>to-do-list</header>
   <div id="main">
     <div id="project-items"></div>
-    <div id="task-items">
-      <div class="task"><div class="task-date">27/09</div><div class="task-title">get tits from school</div><input type="checkbox" class="task-check"></input><button class="task-delete">X</button></div>
-      <div class="task"><div class="task-date">3/04</div><div class="task-title">feed the kitty</div><input type="checkbox" class="task-check"></input><button class="task-delete">X</button></div>
-      <div id="lower-buttons">
-        <button id="add-task-button">+ add task</button>
-        <button id="project-delete">delete project</button>
-      </div>
+    <div class="form"><input id="add-project-input" type="text"><button id="add-project">+ add project</button></div>
+    <div id="task-items"></div>
+    <div id="lower-buttons">
+      <form onsubmit="return">
+        <fieldset>
+            <label for="task-date">date*:</label>
+            <input type="date" name="task-date" id="task-date" required>
+            <label for="task-name">name*:</label>
+            <input type="text" name="task-name" id="task-name" required>
+            <label for="task-description">description:</label>
+            <textarea name="task-description" id="task-description" cols="25" rows="5" maxlength="100"></textarea>
+            <label for="task-priority">priority:</label>
+            <select name="task-priority" id="task-priority">
+              <option value="1">can wait</option>
+              <option value="2">consider doing</option>
+              <option value="3">get to work</option>
+              <option value="4">do it asap</option>
+            </select>
+            <button type="button" id="add-task">+ add task</button>
+        </fieldset>
+      </form>
+      <button id="delete-project">delete project</button>
     </div>
   </div>
 
