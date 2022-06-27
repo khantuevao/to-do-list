@@ -1,68 +1,53 @@
-import { addProject } from "./projects-logic";
-import { renderProjects } from "./projects-dom";
-import { projectsArray } from "./projects-array";
-import { projectFactory } from "./projects-factory";
-import { changeSelected } from "./projects-dom";
-import { getIndex, renderTasks } from "./tasks";
+import { projectsArray, addProjectToArray, deleteProjectFromArray } from "./projects-logic";
+import { renderProjects, changeSelected } from "./projects-dom";
 
 export {displayController};
 
-
 const displayController = (() => {
-  function _addProjectListen() {
+  function _selectFirstProject() {
+    const projects = document.getElementsByClassName('project');
+    if (projects.length === 0) return;
+    projects[0].classList.add('selected');
+  }
+
+  function _addProjectListener() {
     const addProjectBtn = document.getElementById('add-project');
     addProjectBtn.addEventListener('click', () => {
-      addProject();
+      const addFormInput = document.getElementById('add-project-input');
+      const name = addFormInput.value;
+      addProjectToArray(name);
       renderProjects();
+      
+      const projects = document.getElementsByClassName('project');
+      const selected = projects[projects.length - 1].classList.add('selected');
+      addFormInput.value = '';
       changeSelected();
-      showTasks();
-      projectListen();
-      _addProjectListen();
+    })
+  }
+
+  function _deleteProject() {
+    const deleteProjectBtn = document.getElementById('delete-project');
+    deleteProjectBtn.addEventListener('click', () => {
+      deleteProjectFromArray();
+      renderProjects();
+      _selectFirstProject();
+      changeSelected();
+
     });
-  }
-
-  function showTasks() {
-    const index = getIndex();
-    renderTasks(index);
-  }
-
-  function projectListen() {
-    const projects = document.getElementsByClassName('project');
-    for (let i = 0; i < projects.length; i++) {
-      projects[i].addEventListener('click', () => {
-        showTasks();
-      });
-    }
+    
   }
 
   function checkIfEmpty() {
     if (projectsArray.length === 0) {
-      const defaultProject = projectFactory('default');
-      projectsArray.push(defaultProject);
-      console.log(projectsArray)
-
-      const taskOne = {
-        date: '27/09',
-        name: 'feed the kitty',
-        checked: false
-      }
-      projectsArray[0].tasks.push(taskOne);
-
-      const taskTwo = {
-        date: '3/02',
-        name: 'get tits from school',
-        checked: false
-      }
-      projectsArray[0].tasks.push(taskTwo);
-
+      addProjectToArray('default');
       renderProjects();
-
-      showTasks();
-
-      _addProjectListen();
+      _selectFirstProject();
+      _addProjectListener();
+      _deleteProject();
     }
   }
+ 
+
 
   return {checkIfEmpty};
 })();
-

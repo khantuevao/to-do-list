@@ -1,17 +1,24 @@
-import { projectsArray } from "./projects-array";
-import { projectFactory } from "./projects-factory";
+export {projectsArray, projectFactory, addProjectToArray, deleteProjectFromArray};
 
-export {addProject};
+const projectsArray = [];
 
+function projectFactory(name) {
+  const tasks = [];
+  return {name, tasks};
+}
 
-const addProject = () => {
-  const name = prompt('enter name');
+function addProjectToArray(name) {
   if (name === '' || name === null) {
-    alert('error');
+    alert('name cannot be empty');
     return;
   }
   const newProject = projectFactory(name);
   projectsArray.push(newProject);
-  console.log(projectsArray);
+};
+
+function deleteProjectFromArray() {
+  const selectedIndex = (element) => element.name === (document.querySelector('.selected')).textContent;
+  const index = projectsArray.findIndex(selectedIndex);
+  projectsArray.splice(index, 1);
 };
 

@@ -1,16 +1,8 @@
 import { projectsArray } from "./projects-array";
+import { displayController } from "./projects-controller";
 
-export {getIndex};
-export {renderTasks};
+export {renderTasks, deleteProjectFromArray};
 
-
-function getIndex() {
-  const selected = document.querySelector('.selected');
-  const selectedQuery = (element) => element.name === selected.innerHTML;
-  const selectedIndex = projectsArray.findIndex(selectedQuery);
-  
-  return selectedIndex;
-}
 
 function renderTasks(index) {
   const tasks = projectsArray[index].tasks;
@@ -60,3 +52,9 @@ function renderTasks(index) {
 
   taskItems.appendChild(lowerButtons);
 }
+
+function deleteProjectFromArray() {
+  const index = displayController.getIndex();
+  projectsArray.splice(index, 1);
+}
+
