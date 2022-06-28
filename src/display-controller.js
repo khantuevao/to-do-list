@@ -151,7 +151,6 @@ const displayController = (() => {
       showContents();
     } else {
       convertFromLocal();
-      console.log(projectsArray)
       renderProjects();
       selectProject.first();
       changeSelected();
