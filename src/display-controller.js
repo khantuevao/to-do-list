@@ -154,6 +154,7 @@ const displayController = (() => {
       console.log(projectsArray)
       renderProjects();
       selectProject.first();
+      changeSelected();
       _addProject();
       _deleteProject();
       displayTasks();
