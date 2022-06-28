@@ -34,7 +34,6 @@ const displayController = (() => {
       changeSelected();
       displayTasks();
       changeColor(getProjectIndex());
-
       _deleteTask(getProjectIndex());
     })
   }
@@ -87,6 +86,7 @@ const displayController = (() => {
       projects[i].addEventListener('click', () => {
         renderTasks(getProjectIndex());
         changeColor(getProjectIndex());
+        _deleteTask(getProjectIndex());
       });
     }
   }

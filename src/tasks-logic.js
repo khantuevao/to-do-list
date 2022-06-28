@@ -16,9 +16,8 @@ function addTaskToArray(index) {
   projectsArray[index].tasks.push(newTask);
 }
 
-//task select
-//get index of project
-//get array of elements from class
+//task show contents
+
 
 
 
@@ -30,7 +29,6 @@ function addTaskToArray(index) {
 
 
 
-//task change color
 function changeColor(index) {
   const taskDivs = document.getElementsByClassName('task');
   let color;
