@@ -37,7 +37,7 @@ function renderTasks(index) {
 
     const taskLower = document.createElement('div');
     taskLower.classList.add('task-lower');
-    taskLower.textContent = `description: ${item.description}`;
+    taskLower.textContent = `description: ${item.description}`
 
     task.appendChild(taskUpper);
     task.appendChild(taskLower);

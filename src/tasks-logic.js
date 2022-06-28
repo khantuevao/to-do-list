@@ -16,9 +16,6 @@ function addTaskToArray(index) {
   projectsArray[index].tasks.push(newTask);
 }
 
-//task show contents
-
-
 function renderChecked(index) {
   const taskCheckboxes = document.getElementsByClassName('task-check');
   const taskDivs = document.getElementsByClassName('task');
@@ -44,11 +41,9 @@ function taskChangeChecked(index) {
       if (!taskCheckboxes[i].checked) {
         projectsArray[index].tasks[i].checked = false;
         taskDivs[i].style.opacity = null;
-        taskDivs[j].classList.remove('chosen');
       } else {
         projectsArray[index].tasks[i].checked = true;
         taskDivs[i].style.opacity = '0.5';
-        taskDivs[j].classList.remove('chosen');
       }
     });
   }
