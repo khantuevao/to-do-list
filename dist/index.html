@@ -10,10 +10,10 @@
   <header>to-do-list</header>
   <div id="main">
     <div id="project-items"></div>
-    <div class="form"><input id="add-project-input" type="text"><button id="add-project">+ add project</button></div>
+    <div class="form"><input maxlength="15" id="add-project-input" type="text"><button id="add-project">+ add project</button></div>
     <div id="task-items"></div>
     <div id="lower-buttons">
-      <form onsubmit="return">
+      <form>
         <fieldset>
             <label for="task-date">date*:</label>
             <input type="date" name="task-date" id="task-date" required>
@@ -34,7 +34,6 @@
       <button id="delete-project">delete project</button>
     </div>
   </div>
-
   <script src="main.js"></script>
 </body>
 </html>
