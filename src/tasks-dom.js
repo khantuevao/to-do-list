@@ -1,6 +1,6 @@
 import { projectsArray } from "./projects-logic";
 
-export { renderTasks, clearTaskInput };
+export { renderTasks, clearTaskInput, showContents };
 
 function renderTasks(index) {
   const tasks = projectsArray[index].tasks;
@@ -12,26 +12,35 @@ function renderTasks(index) {
     const task = document.createElement('div');
     task.classList.add('task');
 
+    const taskUpper = document.createElement('div');
+    taskUpper.classList.add('task-upper')
+
     const taskDate = document.createElement('div');
     taskDate.classList.add('task-date');
     taskDate.innerHTML = `${item.date}`;
-    task.appendChild(taskDate);
+    taskUpper.appendChild(taskDate);
 
     const taskName = document.createElement('div');
     taskName.classList.add('task-name');
     taskName.innerHTML = `${item.name}`;
-    task.appendChild(taskName);
+    taskUpper.appendChild(taskName);
 
     const taskCheck = document.createElement('input');
     taskCheck.setAttribute('type', 'checkbox');
     taskCheck.classList.add('task-check');
-    taskCheck.setAttribute('value', true)
-    task.appendChild(taskCheck);
+    taskUpper.appendChild(taskCheck);
 
     const deleteTask = document.createElement('button');
     deleteTask.classList.add('delete-task');
     deleteTask.innerHTML = 'x';
-    task.appendChild(deleteTask);
+    taskUpper.appendChild(deleteTask);
+
+    const taskLower = document.createElement('div');
+    taskLower.classList.add('task-lower');
+    taskLower.textContent = `description: ${item.description}`;
+
+    task.appendChild(taskUpper);
+    task.appendChild(taskLower);
 
     taskItems.appendChild(task);
   });
@@ -46,5 +55,23 @@ function clearTaskInput() {
   taskDescription.value = '';
   const taskPriority = document.getElementById('task-priority');
   taskPriority.value = '1';
+}
+
+function showContents() {
+  const taskDivs = document.getElementsByClassName('task');
+  const taskName = document.getElementsByClassName('task-name');
+
+  for (let i = 0; i < taskDivs.length; i++) {
+    taskName[i].addEventListener('click', () => {
+      for (let j = 0; j < taskDivs.length; j++) {
+        taskDivs[j].classList.remove('chosen');
+      }
+      taskDivs[i].classList.add('chosen');
+      taskName[i].addEventListener('click', () => {
+        taskDivs[i].classList.remove('chosen');
+        showContents();
+      })
+    });
+  }
 }
 

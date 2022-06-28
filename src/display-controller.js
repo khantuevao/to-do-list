@@ -1,6 +1,6 @@
 import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
-import { clearTaskInput, renderTasks } from "./tasks-dom";
+import { clearTaskInput, renderTasks, showContents } from "./tasks-dom";
 import { addTaskToArray, changeColor, renderChecked, taskChangeChecked } from "./tasks-logic";
 
 export {displayController};
@@ -37,6 +37,7 @@ const displayController = (() => {
       _deleteTask(getProjectIndex());
       renderChecked(getProjectIndex());
       taskChangeChecked(getProjectIndex());
+      showContents();
     })
   }
 
@@ -56,6 +57,7 @@ const displayController = (() => {
         _deleteTask(getProjectIndex());
         renderChecked(getProjectIndex());
         taskChangeChecked(getProjectIndex());
+        showContents();
       }
     });
   }
@@ -70,6 +72,7 @@ const displayController = (() => {
       clearTaskInput();
       renderChecked(getProjectIndex());
       taskChangeChecked(getProjectIndex());
+      showContents();
     })
   }
 
@@ -83,6 +86,7 @@ const displayController = (() => {
         _deleteTask(getProjectIndex());
         renderChecked(getProjectIndex());
         taskChangeChecked(getProjectIndex());
+        showContents();
       });
     }
   }
@@ -97,6 +101,7 @@ const displayController = (() => {
         _deleteTask(getProjectIndex());
         renderChecked(getProjectIndex());
         taskChangeChecked(getProjectIndex());
+        showContents();
       });
     }
   }
@@ -117,14 +122,14 @@ const displayController = (() => {
         date: '2019-09-27',
         name: 'get tits from school',
         priority: '1',
-        description: '',
+        description: 'a brief explanation of the task',
         checked: false
       }
 
       const defaultTaskTwo = {
         date: '2018-05-03',
         name: 'feed the kitty',
-        description: '',
+        description: 'kitty is important, feed the kitty',
         priority: '4',
         checked: true
       }
@@ -138,6 +143,7 @@ const displayController = (() => {
       changeColor(getProjectIndex());
       renderChecked(getProjectIndex());
       taskChangeChecked(getProjectIndex());
+      showContents();
     }
   }
  
