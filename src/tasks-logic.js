@@ -1,8 +1,8 @@
 import { projectsArray } from "./projects-logic";
-export {taskFactory, addTaskToArray, changeColor};
+export {taskFactory, addTaskToArray, changeColor, taskChangeChecked};
 
 const taskFactory = (date, name, description, priority) => {
-  const checked = false;
+  let checked = false;
   return {date, name, description, priority, checked}
 }
 
@@ -19,10 +19,33 @@ function addTaskToArray(index) {
 //task show contents
 
 
+function checkIfChecked(index) {
+  if (projectsArray[index].tasks[i].checked = 'true') {
+    taskCheckboxes[i].checked;
+    tasks[i].style.opacity = '0.5';
 
+  } else {
+    !taskCheckboxes[i].checked;
+    tasks[i].style.opacity = null;
+
+  }
+}
 
 
 //task checked
+function taskChangeChecked(index) {
+  const taskCheckboxes = document.getElementsByClassName('task-check');
+
+  for (let i = 0; i < taskCheckboxes.length; i++) {
+    taskCheckboxes[i].addEventListener('change', () => {
+      if (!taskCheckboxes[i].checked) {
+        projectsArray[index].tasks[i].checked = false;
+      } else {
+        projectsArray[index].tasks[i].checked = true;
+      }
+    });
+  }
+}
 
 
 

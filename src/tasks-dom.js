@@ -25,6 +25,7 @@ function renderTasks(index) {
     const taskCheck = document.createElement('input');
     taskCheck.setAttribute('type', 'checkbox');
     taskCheck.classList.add('task-check');
+    taskCheck.setAttribute('value', true)
     task.appendChild(taskCheck);
 
     const deleteTask = document.createElement('button');
@@ -46,3 +47,4 @@ function clearTaskInput() {
   const taskPriority = document.getElementById('task-priority');
   taskPriority.value = '1';
 }
+

@@ -1,7 +1,7 @@
 import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
 import { clearTaskInput, renderTasks } from "./tasks-dom";
-import { addTaskToArray, changeColor } from "./tasks-logic";
+import { addTaskToArray, changeColor, taskChangeChecked } from "./tasks-logic";
 
 export {displayController};
 
@@ -126,6 +126,7 @@ const displayController = (() => {
       _deleteTask(getProjectIndex());
       _addTask();
       changeColor(getProjectIndex());
+      taskChangeChecked(getProjectIndex())
     }
   }
  
