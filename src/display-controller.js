@@ -125,17 +125,17 @@ const displayController = (() => {
 
       const defaultTaskOne = {
         date: '2019-09-27',
-        name: 'get tits from school',
+        name: 'create meme',
         priority: '1',
-        description: 'a brief explanation of the task',
+        description: 'think hard to create a good meme',
         checked: false
       }
 
       const defaultTaskTwo = {
         date: '2018-05-03',
-        name: 'feed the kitty',
-        description: 'kitty is important, feed the kitty',
-        priority: '4',
+        name: 'post meme',
+        description: 'make sure meme is funny before posting it or you will get ridiculed and die from cringe',
+        priority: '3',
         checked: true
       }
 
