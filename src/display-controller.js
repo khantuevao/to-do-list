@@ -1,7 +1,7 @@
 import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
 import { clearTaskInput, renderTasks } from "./tasks-dom";
-import { addTaskToArray, changeColor, taskChangeChecked } from "./tasks-logic";
+import { addTaskToArray, changeColor, renderChecked, taskChangeChecked } from "./tasks-logic";
 
 export {displayController};
 
@@ -35,6 +35,8 @@ const displayController = (() => {
       displayTasks();
       changeColor(getProjectIndex());
       _deleteTask(getProjectIndex());
+      renderChecked(getProjectIndex());
+      taskChangeChecked(getProjectIndex());
     })
   }
 
@@ -52,6 +54,8 @@ const displayController = (() => {
         displayTasks();
         changeColor(getProjectIndex());
         _deleteTask(getProjectIndex());
+        renderChecked(getProjectIndex());
+        taskChangeChecked(getProjectIndex());
       }
     });
   }
@@ -64,6 +68,8 @@ const displayController = (() => {
       changeColor(getProjectIndex());
       _deleteTask(getProjectIndex());
       clearTaskInput();
+      renderChecked(getProjectIndex());
+      taskChangeChecked(getProjectIndex());
     })
   }
 
@@ -75,6 +81,8 @@ const displayController = (() => {
         displayTasks();
         changeColor(getProjectIndex());
         _deleteTask(getProjectIndex());
+        renderChecked(getProjectIndex());
+        taskChangeChecked(getProjectIndex());
       });
     }
   }
@@ -87,6 +95,8 @@ const displayController = (() => {
         renderTasks(getProjectIndex());
         changeColor(getProjectIndex());
         _deleteTask(getProjectIndex());
+        renderChecked(getProjectIndex());
+        taskChangeChecked(getProjectIndex());
       });
     }
   }
@@ -126,7 +136,8 @@ const displayController = (() => {
       _deleteTask(getProjectIndex());
       _addTask();
       changeColor(getProjectIndex());
-      taskChangeChecked(getProjectIndex())
+      renderChecked(getProjectIndex());
+      taskChangeChecked(getProjectIndex());
     }
   }
  

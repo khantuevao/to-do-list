@@ -1,5 +1,5 @@
 import { projectsArray } from "./projects-logic";
-export {taskFactory, addTaskToArray, changeColor, taskChangeChecked};
+export {taskFactory, addTaskToArray, changeColor, taskChangeChecked, renderChecked};
 
 const taskFactory = (date, name, description, priority) => {
   let checked = false;
@@ -19,15 +19,19 @@ function addTaskToArray(index) {
 //task show contents
 
 
-function checkIfChecked(index) {
-  if (projectsArray[index].tasks[i].checked = 'true') {
-    taskCheckboxes[i].checked;
-    tasks[i].style.opacity = '0.5';
+function renderChecked(index) {
+  const taskCheckboxes = document.getElementsByClassName('task-check');
+  const taskDivs = document.getElementsByClassName('task');
 
-  } else {
-    !taskCheckboxes[i].checked;
-    tasks[i].style.opacity = null;
-
+  for (let i = 0; i < taskCheckboxes.length; i++) {
+    if (projectsArray[index].tasks[i].checked === true) {
+      taskCheckboxes[i].checked = true;
+      taskDivs[i].style.opacity = '0.5';
+  
+    } else {
+      taskCheckboxes[i].checked = false;
+      taskDivs[i].style.opacity = null;
+    }
   }
 }
 
@@ -35,13 +39,18 @@ function checkIfChecked(index) {
 //task checked
 function taskChangeChecked(index) {
   const taskCheckboxes = document.getElementsByClassName('task-check');
+  const taskDivs = document.getElementsByClassName('task');
 
   for (let i = 0; i < taskCheckboxes.length; i++) {
     taskCheckboxes[i].addEventListener('change', () => {
       if (!taskCheckboxes[i].checked) {
         projectsArray[index].tasks[i].checked = false;
+        taskDivs[i].style.opacity = null;
+
       } else {
         projectsArray[index].tasks[i].checked = true;
+        taskDivs[i].style.opacity = '0.5';
+
       }
     });
   }
