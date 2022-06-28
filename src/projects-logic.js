@@ -1,6 +1,7 @@
-export {projectsArray, projectFactory, addProjectToArray, getProjectIndex};
+export {projectsArray, projectFactory, addProjectToArray, getProjectIndex, saveToLocal ,convertFromLocal};
 
-const projectsArray = [];
+
+let projectsArray = [];
 
 const projectFactory = (name) => {
   const tasks = [];
@@ -23,3 +24,11 @@ function getProjectIndex() {
   return index;
 }
 
+function saveToLocal() {
+  localStorage.setItem('projectsArray', JSON.stringify(projectsArray));
+}
+
+function convertFromLocal() {
+  let getProjects = localStorage.getItem('projectsArray');
+  projectsArray = JSON.parse(getProjects);
+}

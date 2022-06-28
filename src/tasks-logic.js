@@ -1,5 +1,7 @@
-import { projectsArray } from "./projects-logic";
+import { projectsArray, saveToLocal } from "./projects-logic";
+
 export {taskFactory, addTaskToArray, changeColor, taskChangeChecked, renderChecked};
+
 
 const taskFactory = (date, name, description, priority) => {
   let checked = false;
@@ -41,9 +43,11 @@ function taskChangeChecked(index) {
       if (!taskCheckboxes[i].checked) {
         projectsArray[index].tasks[i].checked = false;
         taskDivs[i].style.opacity = null;
+        saveToLocal();
       } else {
         projectsArray[index].tasks[i].checked = true;
         taskDivs[i].style.opacity = '0.5';
+        saveToLocal();
       }
     });
   }

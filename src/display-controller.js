@@ -1,9 +1,10 @@
-import { projectsArray, addProjectToArray, getProjectIndex } from "./projects-logic";
+import { projectsArray, addProjectToArray, getProjectIndex, saveToLocal, convertFromLocal } from "./projects-logic";
 import { renderProjects, changeSelected } from "./projects-dom";
 import { clearTaskInput, renderTasks, showContents } from "./tasks-dom";
 import { addTaskToArray, changeColor, renderChecked, taskChangeChecked } from "./tasks-logic";
 
 export {displayController};
+
 
 const displayController = (() => {
   const selectProject = (() => {
@@ -38,6 +39,7 @@ const displayController = (() => {
       renderChecked(getProjectIndex());
       taskChangeChecked(getProjectIndex());
       showContents();
+      saveToLocal();
     })
   }
 
@@ -58,6 +60,7 @@ const displayController = (() => {
         renderChecked(getProjectIndex());
         taskChangeChecked(getProjectIndex());
         showContents();
+        saveToLocal();
       }
     });
   }
@@ -73,6 +76,7 @@ const displayController = (() => {
       renderChecked(getProjectIndex());
       taskChangeChecked(getProjectIndex());
       showContents();
+      saveToLocal();
     })
   }
 
@@ -87,6 +91,7 @@ const displayController = (() => {
         renderChecked(getProjectIndex());
         taskChangeChecked(getProjectIndex());
         showContents();
+        saveToLocal();
       });
     }
   }
@@ -111,7 +116,7 @@ const displayController = (() => {
 
 
   function checkIfEmpty() {
-    if (projectsArray.length === 0) {
+    if (localStorage.length === 0) {
       addProjectToArray('default');
       renderProjects();
       selectProject.first();
@@ -144,10 +149,22 @@ const displayController = (() => {
       renderChecked(getProjectIndex());
       taskChangeChecked(getProjectIndex());
       showContents();
+    } else {
+      convertFromLocal();
+      console.log(projectsArray)
+      renderProjects();
+      selectProject.first();
+      _addProject();
+      _deleteProject();
+      displayTasks();
+      _deleteTask(getProjectIndex());
+      _addTask();
+      changeColor(getProjectIndex());
+      renderChecked(getProjectIndex());
+      taskChangeChecked(getProjectIndex());
+      showContents();
     }
   }
- 
-
 
   return {checkIfEmpty};
 })();
