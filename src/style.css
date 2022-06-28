@@ -102,7 +102,6 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 2rem;
   margin: 0.5rem;
   margin-bottom: 1rem;
 }
